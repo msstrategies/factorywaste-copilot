@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FactoryWaste Copilot</title>
+  <meta name="description" content="Ask a production line, in plain language, why it is wasting material. Grounded, deterministic answers an operator can trust." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">F</div>
+      <div class="brand">
+        <h1>FactoryWaste Copilot</h1>
+        <p class="sub">Ask the line why it is wasting material. Every number traces to the data.</p>
+      </div>
+      <div class="header-spacer"></div>
+      <span class="pill synthetic" title="This is synthetic data, generated for the demo. It is not real factory data.">Synthetic data</span>
+      <span class="pill" id="dataPill">Line 3 - 30 days - hourly</span>
+      <button class="btn" id="evalBtn">Run evals</button>
+      <button class="btn" id="settingsBtn">Settings</button>
+    </header>
+
+    <!-- Chat column -->
+    <section class="chat">
+      <div class="kpis" id="kpis"></div>
+
+      <div class="messages" id="messages"></div>
+
+      <div class="suggestions" id="suggestions"></div>
+
+      <form class="composer" id="composer">
+        <input id="questionInput" type="text" autocomplete="off"
+               placeholder="e.g. Why did the scrap rate on Line 3 spike yesterday?" />
+        <button class="btn primary" type="submit">Ask</button>
+      </form>
+    </section>
+
+    <!-- Data / trust panel -->
+    <aside class="panel" id="panel">
+      <div class="panel-head">
+        <h2 id="panelTitle">The data behind the answer</h2>
+        <p id="panelSub">Ask a question. The numbers the Copilot cites are shown here so you can check them.</p>
+      </div>
+      <div class="panel-body" id="panelBody">
+        <div class="empty-state">
+          This panel is the trust layer. When the Copilot answers, it shows the
+          computed analysis and the raw hourly rows behind it, so an operator can
+          verify every figure rather than take the model's word for it.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Settings modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <h2>Narration settings</h2>
+      <p>By default the Copilot uses a deterministic mock narrator that speaks only from the computed facts (no key, fully offline). You can optionally route narration through the Claude API.</p>
+
+      <div class="field toggle-row">
+        <input type="checkbox" id="useLLM" />
+        <label for="useLLM" class="no-margin">Use Claude API for narration (optional)</label>
+      </div>
+
+      <div class="field">
+        <label for="apiKey">Anthropic API key (kept in memory only, never saved to disk)</label>
+        <input type="password" id="apiKey" placeholder="sk-ant-... (leave blank to stay in mock mode)" />
+      </div>
+
+      <div class="field">
+        <label for="model">Model</label>
+        <select id="model">
+          <option value="claude-3-5-haiku-latest">claude-3-5-haiku-latest (fast, cheap)</option>
+          <option value="claude-sonnet-4-5">claude-sonnet-4-5</option>
+        </select>
+      </div>
+
+      <div class="note">
+        Whether mock or LLM, the narrator can only state numbers the deterministic
+        analysis layer computed. The LLM is given the grounded facts and is
+        instructed to narrate them and invent nothing. The key is never written to
+        disk and never leaves your browser except in the direct call to Anthropic.
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn" id="modalCancel">Cancel</button>
+        <button class="btn primary" id="modalSave">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Eval modal -->
+  <div class="modal-backdrop" id="evalBackdrop">
+    <div class="modal eval-modal">
+      <h2>Grounding eval suite</h2>
+      <p>10 question / expected-fact pairs. Each asserts on the structured facts the narrator is allowed to speak from, so a green run means the Copilot cannot state a wrong number.</p>
+      <div id="evalResults"></div>
+      <div class="modal-actions">
+        <button class="btn primary" id="evalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modules attach to window in order: data -> analysis -> copilot -> evals -> app -->
+  <script src="data.js"></script>
+  <script src="analysis.js"></script>
+  <script src="copilot.js"></script>
+  <script src="evals.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

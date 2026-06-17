@@ -1,0 +1,19 @@
+{
+  "name": "factorywaste-copilot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A grounded chat copilot that tells a plant operator why a production line is wasting material. Deterministic analysis, LLM only at the narration layer.",
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "eval": "node run-evals.mjs"
+  },
+  "keywords": [
+    "manufacturing",
+    "industrial-ai",
+    "waste-reduction",
+    "grounded-llm",
+    "forward-deployed-engineer"
+  ],
+  "license": "MIT"
+}

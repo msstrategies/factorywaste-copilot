@@ -1,0 +1,16 @@
+# Secrets - never commit a real key
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Local screenshots are kept for the write-up, but ignore ad-hoc ones
+screenshot-tmp-*.png
