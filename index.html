@@ -4,17 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FactoryWaste Copilot</title>
-  <meta name="description" content="Ask a production line, in plain language, why it is wasting material. Grounded, deterministic answers an operator can trust." />
+  <meta name="description" content="Ask a production line, in plain language, why it is wasting material. Grounded, deterministic answers an operator can trust. A proof-of-work demo built for ethon." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app">
     <header>
-      <div class="logo">F</div>
-      <div class="brand">
-        <h1>FactoryWaste Copilot</h1>
-        <p class="sub">Ask the line why it is wasting material. Every number traces to the data.</p>
+      <div class="brand-lockup">
+        <img class="ethon-mark" src="ethon-logo.png" alt="ethon" />
+        <div class="lockup-divider"></div>
+        <div class="brand">
+          <h1>FactoryWaste Copilot</h1>
+          <p class="sub">Grounded waste diagnostics for the factory floor</p>
+        </div>
       </div>
+      <span class="demo-tag" title="A working slice built to show how I would approach ethon's problem. Synthetic data, not an official product.">Proof-of-work demo</span>
       <div class="header-spacer"></div>
       <span class="pill synthetic" title="This is synthetic data, generated for the demo. It is not real factory data.">Synthetic data</span>
       <span class="pill" id="dataPill">Line 3 - 30 days - hourly</span>
@@ -51,6 +59,16 @@
         </div>
       </div>
     </aside>
+
+    <footer class="app-footer">
+      <span class="built">Built by <strong>Michael Sezer</strong> as a proof-of-work demo for <strong>ethon</strong></span>
+      <span class="dot">·</span>
+      <a href="https://github.com/msstrategies/factorywaste-copilot" target="_blank" rel="noopener">Source &amp; write-up</a>
+      <span class="dot">·</span>
+      <a href="https://msstrategies.github.io" target="_blank" rel="noopener">Portfolio</a>
+      <span class="foot-spacer"></span>
+      <span class="disclaimer">Synthetic data. Deterministic analysis, LLM only at the narration edge. Not affiliated with EthonAI.</span>
+    </footer>
   </div>
 
   <!-- Settings modal -->

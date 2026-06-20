@@ -172,23 +172,23 @@
       if (flagged) {
         bars += '<rect x="' + (x(i) - 3).toFixed(1) + '" y="' + y(r.scrapRate).toFixed(1) +
           '" width="6" height="' + (h - padB - y(r.scrapRate)).toFixed(1) +
-          '" fill="rgba(248,81,73,0.35)" />';
+          '" fill="rgba(227,170,99,0.32)" />';
       }
     });
 
     // Baseline reference line.
     const baseY = y(spike.baselineScrap);
     const baseLine = '<line x1="' + padL + '" y1="' + baseY.toFixed(1) + '" x2="' + (w - 6) +
-      '" y2="' + baseY.toFixed(1) + '" stroke="#3fb950" stroke-dasharray="3 3" stroke-width="1" />';
+      '" y2="' + baseY.toFixed(1) + '" stroke="#4ec79a" stroke-dasharray="3 3" stroke-width="1" />';
 
-    const yLabels = '<text x="2" y="' + (y(maxV) + 4).toFixed(1) + '" fill="#8da2b5" font-size="9">' +
+    const yLabels = '<text x="2" y="' + (y(maxV) + 4).toFixed(1) + '" fill="#8298ab" font-size="9">' +
       maxV.toFixed(0) + '%</text>' +
-      '<text x="2" y="' + (h - padB).toFixed(1) + '" fill="#8da2b5" font-size="9">0</text>' +
-      '<text x="' + (padL + 4) + '" y="' + (baseY - 3).toFixed(1) + '" fill="#3fb950" font-size="9">baseline ' + spike.baselineScrap + '%</text>';
+      '<text x="2" y="' + (h - padB).toFixed(1) + '" fill="#8298ab" font-size="9">0</text>' +
+      '<text x="' + (padL + 4) + '" y="' + (baseY - 3).toFixed(1) + '" fill="#4ec79a" font-size="9">baseline ' + spike.baselineScrap + '%</text>';
 
     return '<svg class="chart" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none">' +
       bars + baseLine +
-      '<path d="' + pts + '" fill="none" stroke="#2f81f7" stroke-width="2" />' +
+      '<path d="' + pts + '" fill="none" stroke="#5fc2b8" stroke-width="2" />' +
       yLabels +
       '</svg>';
   }
@@ -299,9 +299,9 @@
     $('dataPill').textContent = D.meta.line + ' - ' + D.meta.days + ' days - ' + D.meta.hours + ' hourly rows';
 
     addMessage('bot',
-      'Hi. I am FactoryWaste Copilot for ' + D.meta.line + '. Ask me, in plain language, ' +
-      'why the line is wasting material. I answer only from the line data and show you the numbers behind every answer. ' +
-      'Note: this is synthetic demo data, not real factory data.',
+      'I am FactoryWaste Copilot for ' + D.meta.line + '. Ask me in plain language why the line is wasting material. ' +
+      'I answer only from the line’s own data and show every number behind the answer, so you can check it rather than take my word for it. ' +
+      'This runs on synthetic demo data.',
       { mode: 'mock' });
 
     $('composer').addEventListener('submit', function (e) { e.preventDefault(); submitQuestion(); });
