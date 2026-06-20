@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FactoryWaste Copilot</title>
   <meta name="description" content="Ask a production line, in plain language, why it is wasting material. Grounded, deterministic answers an operator can trust. A proof-of-work demo built for ethon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FactoryWaste Copilot" />
+  <meta property="og:description" content="Ask a production line why it is wasting material and get a grounded answer traced to the data. Deterministic core, LLM only at the narration edge. A proof-of-work demo built for ethon." />
+  <meta property="og:image" content="https://msstrategies.github.io/factorywaste-copilot/docs/hero.png" />
+  <meta property="og:url" content="https://msstrategies.github.io/factorywaste-copilot/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FactoryWaste Copilot" />
+  <meta name="twitter:description" content="Grounded waste diagnostics for the factory floor. Deterministic core, LLM only at the narration edge." />
+  <meta name="twitter:image" content="https://msstrategies.github.io/factorywaste-copilot/docs/hero.png" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,8 +35,8 @@
       <div class="header-spacer"></div>
       <span class="pill synthetic" title="This is synthetic data, generated for the demo. It is not real factory data.">Synthetic data</span>
       <span class="pill" id="dataPill">Line 3 - 30 days - hourly</span>
-      <button class="btn" id="evalBtn">Run evals</button>
-      <button class="btn" id="settingsBtn">Settings</button>
+      <button type="button" class="btn" id="evalBtn">Run evals</button>
+      <button type="button" class="btn" id="settingsBtn">Settings</button>
     </header>
 
     <!-- Chat column -->
@@ -103,8 +112,8 @@
       </div>
 
       <div class="modal-actions">
-        <button class="btn" id="modalCancel">Cancel</button>
-        <button class="btn primary" id="modalSave">Save</button>
+        <button type="button" class="btn" id="modalCancel">Cancel</button>
+        <button type="button" class="btn primary" id="modalSave">Save</button>
       </div>
     </div>
   </div>
@@ -116,7 +125,7 @@
       <p>10 question / expected-fact pairs. Each asserts on the structured facts the narrator is allowed to speak from, so a green run means the Copilot cannot state a wrong number.</p>
       <div id="evalResults"></div>
       <div class="modal-actions">
-        <button class="btn primary" id="evalClose">Close</button>
+        <button type="button" class="btn primary" id="evalClose">Close</button>
       </div>
     </div>
   </div>
